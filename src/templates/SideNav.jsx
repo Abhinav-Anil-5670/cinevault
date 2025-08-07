@@ -20,7 +20,7 @@ const SideNav = () => {
         <nav className='flex flex-col text-zinc-400 text-xl gap-3'>
             <h1 className='text-white font-semibold text-xl mt-10 mb-5'>Website Information</h1>
             <Link className='hover:bg-[#6556CD] hover:text-white rounded-lg duration-300 p-5 '><i class="ri-fire-line"></i> About CineVault</Link>
-            <Link className='hover:bg-[#6556CD] hover:text-white rounded-lg duration-300 p-5 '><i class="ri-information-line"></i> Contact US</Link>
+            <Link className='hover:bg-[#6556CD] hover:text-white rounded-lg duration-300 p-5 '><i class="ri-information-line"></i> Contact Us</Link>
             
         </nav>
     </div>
