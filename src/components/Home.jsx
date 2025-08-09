@@ -5,6 +5,7 @@ import axios from "../utils/axios";
 import Header from "../templates/Header";
 import HorizontalCard from "../templates/HorizontalCard";
 import DropDown from "../templates/DropDown";
+import Loading from "./Loading";
 
 const Home = () => {
   document.title = "Cinevault | Home";
@@ -54,7 +55,7 @@ const Home = () => {
       </div>
     </>
   ) : (
-    <h1>Loading</h1>
+    <Loading/>
   );
 };
 
