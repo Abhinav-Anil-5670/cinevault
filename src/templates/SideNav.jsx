@@ -35,7 +35,7 @@ const SideNav = () => {
           <Link to='popular' className='hover:bg-[#6556CD] hover:text-white rounded-lg duration-300 p-5'><i className="ri-bard-line"></i> Popular</Link>
           <Link to='movie' className='hover:bg-[#6556CD] hover:text-white rounded-lg duration-300 p-5'><i className="ri-movie-line"></i> Movies</Link>
           <Link to='/tvshows' className='hover:bg-[#6556CD] hover:text-white rounded-lg duration-300 p-5'><i className="ri-tv-2-line"></i> Tv Shows</Link>
-          <Link className='hover:bg-[#6556CD] hover:text-white rounded-lg duration-300 p-5'><i className="ri-team-fill"></i> People</Link>
+          <Link to='/people' className='hover:bg-[#6556CD] hover:text-white rounded-lg duration-300 p-5'><i className="ri-team-fill"></i> People</Link>
         </nav>
         <hr className='border-none h-[1px] bg-zinc-400' />
         <nav className='flex flex-col text-zinc-400 text-xl gap-3'>

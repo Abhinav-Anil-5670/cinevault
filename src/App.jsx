@@ -4,6 +4,7 @@ import Trending from "./templates/Trending"
 import Popular from "./templates/Popular"
 import Movie from "./templates/Movie"
 import TvShows from "./templates/TvShows"
+import People from "./templates/People"
 
 const App = () => {
   return (
@@ -15,6 +16,7 @@ const App = () => {
           <Route path='/popular' element={<Popular/>  }/>
           <Route path='/movie' element={<Movie/>  }/>
           <Route path='/tvshows' element={<TvShows/>  }/>
+          <Route path='/people' element={<People/>  }/>
         </Routes>
        
       </div>
