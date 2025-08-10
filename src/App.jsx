@@ -1,8 +1,9 @@
 import { Route, Routes } from "react-router-dom"
 import Home from "./components/Home"
-import Loading from "./components/Loading"
 import Trending from "./templates/Trending"
 import Popular from "./templates/Popular"
+import Movie from "./templates/Movie"
+import TvShows from "./templates/TvShows"
 
 const App = () => {
   return (
@@ -12,6 +13,8 @@ const App = () => {
           <Route path='/' element={<Home/>}/>
           <Route path='/trending' element={<Trending/>  }/>
           <Route path='/popular' element={<Popular/>  }/>
+          <Route path='/movie' element={<Movie/>  }/>
+          <Route path='/tvshows' element={<TvShows/>  }/>
         </Routes>
        
       </div>
