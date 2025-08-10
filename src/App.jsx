@@ -1,6 +1,7 @@
 import { Route, Routes } from "react-router-dom"
 import Home from "./components/Home"
 import Loading from "./components/Loading"
+import Trending from "./templates/Trending"
 
 const App = () => {
   return (
@@ -8,7 +9,7 @@ const App = () => {
       <div className=" bg-[#1F1E24] w-screen h-screen  flex">
         <Routes>
           <Route path='/' element={<Home/>}/>
-          
+          <Route path='/trending' element={<Trending/>  }/>
         </Routes>
        
       </div>
