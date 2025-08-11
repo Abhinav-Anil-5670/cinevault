@@ -18,7 +18,7 @@ const People = () => {
 
   const Getpeople = async () => {
     try {
-      const { data } = await axios.get(`/person/popular`);
+      const { data } = await axios.get(`/person/popular?page=${page}`);
 
       if (data.results.length > 0) {
         setpeople((prevstate) => [...prevstate, ...data.results]);
@@ -31,9 +31,19 @@ const People = () => {
     }
   };
 
+  const refreshHandler = () => {
+    if (people.length === 0) {
+      Getpeople();
+    } else {
+      setpage(1);
+      setpeople([]);
+      Getpeople();
+    }
+  };
+
   useEffect(() => {
-  Getpeople(); 
-}, []);
+    refreshHandler();
+  }, []);
 
   return people.length > 0 ? (
     <div className="w-screen min-h-screen  ">
