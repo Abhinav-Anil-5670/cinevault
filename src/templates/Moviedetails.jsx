@@ -42,6 +42,10 @@ const Moviedetails = () => {
         </a>
         <a target="_blank" href={`https://www.imdb.com/title/${info.externalid.imdb_id}`}>IMDB</a>
       </nav>
+
+      <div>
+        
+      </div>
     </div>
   ): <Loading/>
 };
