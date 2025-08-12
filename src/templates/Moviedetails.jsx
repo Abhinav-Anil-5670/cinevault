@@ -1,18 +1,22 @@
 import React, { useEffect } from "react";
 import { asyncloadmovie } from "../store/actions/movieActions";
 import { useDispatch, useSelector } from "react-redux";
-import { useNavigate, useParams } from "react-router-dom";
+import {  useLocation, useNavigate, useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 import Loading from "../components/Loading";
 
 const Moviedetails = () => {
-  const {info} = useSelector((state)=>state.movie)
+  const {pathname} = useLocation()
+  const { info } = useSelector((state) => state.movie);
   const Navigate = useNavigate();
   const dispatch = useDispatch();
   const { id } = useParams();
   useEffect(() => {
     dispatch(asyncloadmovie(id));
   }, []);
+  console.log(info);
+
+  
   return info ? (
     <div
       style={{
@@ -20,14 +24,12 @@ const Moviedetails = () => {
       rgba(0,0,0,0.2), 
       rgba(0,0,0,0.5), 
       rgba(0,0,0,0.7)
-    ), url(https://image.tmdb.org/t/p/original/${
-      info.detail.backdrop_path
-    })`,
+    ), url(https://image.tmdb.org/t/p/original/${info.detail.backdrop_path})`,
         backgroundPosition: "top 20%",
         backgroundSize: "cover",
         backgroundRepeat: "no-repeat",
       }}
-      className="w-screen h-screen px-[10px]"
+      className="w-screen h-screen px-[10vh]" 
     >
       <nav className="h-[10vh] w-full text-zinc-100 flex gap-10 text-2xl items-center">
         <Link
@@ -37,17 +39,61 @@ const Moviedetails = () => {
         <a target="_blank" href={info.detail.homepage}>
           <i class="ri-external-link-line"></i>
         </a>
-        <a target="_blank" href={`https://www.wikidata.org/wiki/${info.externalid.wikidata_id}`}>
+        <a
+          target="_blank"
+          href={`https://www.wikidata.org/wiki/${info.externalid.wikidata_id}`}
+        >
           <i class="ri-earth-line"></i>
         </a>
-        <a target="_blank" href={`https://www.imdb.com/title/${info.externalid.imdb_id}`}>IMDB</a>
+        <a
+          target="_blank"
+          href={`https://www.imdb.com/title/${info.externalid.imdb_id}`}
+        >
+          IMDB
+        </a>
       </nav>
 
-      <div>
+      <div className="w-full flex">
+        <img
+            className="w-[40vh] h-[60vh] object-cover shadow-[8px_17px_38px_2px_rgba(0,0,0,.5)] "
+            src={`https://image.tmdb.org/t/p/original/${info.detail.poster_path})`}
+            alt=""
+          />
+          <div className="conten ml-[5%] text-white">
+            <h1 className="text-5xl font-black text-white">{info.detail.title || info.detail.name || info.detail.original_name || info.detail.original_title} <small className="text-xl font-bold text-zinc-300 ">{info.detail.release_date.split("-")[0]}</small></h1>
+
+            <div className="flex text-white items-center gap-x-5 mt-5 mb-10">
+              <span className="rounded-full bg-yellow-600 text-white w-[5vh] h-[5vh] flex justify-center items-center">{(
+              info.detail.vote_average*10).toFixed()} <sup>%</sup></span>
+              <h1 className="font-semibold text-2xl w-[60px] leading-6">User Score</h1>
+              <h1 className="">{info.detail.release_date}</h1>
+              <h1>{info.detail.genres.map((g)=>g.name).join(',')}</h1>
+              <h1>{info.detail.runtime} min</h1>
+            </div>
+              
+             <h1 className="text-xl font-semibold italic text-zinc-200 ">{info.detail.tagline}</h1> 
+             <h1 className="text-xl font-semibold mt-5 ">Overview</h1> 
+             <p>{info.detail.overview}</p>
+
+             <h1 className="text-xl font-semibold mt-5 ">Movie Translations</h1> 
+             <p className="mb-10">{info.translations.join(', ')}</p>
+
+             <Link className=" p-10 bg-[#6556CD] rounded-lg py-5 px-10" to={`${pathname}/trailer`}><i class="ri-play-line mr-3"></i> Play Trailer</Link>
+                
+          </div>
+          
+        <div>
+          
+
+
         
+        </div>
+          
       </div>
     </div>
-  ): <Loading/>
+  ) : (
+    <Loading />
+  );
 };
 
 export default Moviedetails;
