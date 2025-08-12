@@ -52,7 +52,7 @@ const Movie = () => {
           <i
             onClick={() => Navigate(-1)}
             className=" hover:text-[#6556CD]  ri-arrow-left-line"
-          ></i>{" "}
+          ></i>
           Movie <small className=" ml-2 text-sm text-zinc-600">({category})</small>
         </h1>
         <div className="flex items-center w-[70%]">
