@@ -9,6 +9,7 @@ import Moviedetails from "./templates/Moviedetails"
 import Peopledetails from "./templates/Peopledetails"
 import Tvdetails from "./templates/Tvdetails"
 
+
 const App = () => {
   return (
     
@@ -19,6 +20,8 @@ const App = () => {
           <Route path='/popular' element={<Popular/>  }/>
           <Route path='/movie' element={<Movie/>  }/>
           <Route path='/movie/details/:id' element={<Moviedetails/>}/>
+    
+          
           
           <Route path='/tvshows' element={<TvShows/>  }/>
           <Route path='/tv/details/:id' element={<Tvdetails/>}/>

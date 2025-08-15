@@ -1,6 +1,13 @@
 import { Link } from 'react-router-dom'
+import { useSelector } from 'react-redux';
 
 const Header = ({data}) => {
+  const { info } = useSelector((state) => state.movie);
+
+// Safely find the trailer key from the full video list
+const videos = info?.videos?.results;
+const officialTrailer = videos?.find((video) => video.type === "Trailer");
+const key = officialTrailer?.key || videos?.[0]?.key;
   return (
     <div
   className="w-full h-[20vh] sm:h-[30vh] md:h-[40vh] lg:h-[50vh] flex flex-col justify-end items-start p-[5%]"
@@ -24,7 +31,7 @@ const Header = ({data}) => {
         <i class=" ml-5 ri-dvd-line text-yellow-400"></i> {data.media_type.toUpperCase()}
 
     </p>
-    <Link className='p-3 rounded text-white font-semibold mt-5 bg-[#6556cd]'>Watch Trailer</Link>
+    
 </div>
 
   )

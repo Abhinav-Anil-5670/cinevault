@@ -1,17 +1,25 @@
 import React, { useEffect } from "react";
 import { asyncloadmovie, removemovie } from "../store/actions/movieActions";
 import { useDispatch, useSelector } from "react-redux";
-import {  useLocation, useNavigate, useParams } from "react-router-dom";
+import {  Outlet, useLocation, useNavigate, useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
 import HorizontalCard from './HorizontalCard'
 import Loading from "../components/Loading";
 
 const Moviedetails = () => {
-  const {pathname} = useLocation()
   const { info } = useSelector((state) => state.movie);
+
+// Safely find the trailer key from the full video list
+const videos = info?.videos?.results;
+const officialTrailer = videos?.find((video) => video.type === "Trailer");
+const key = officialTrailer?.key || videos?.[0]?.key;
+  
+  
   const Navigate = useNavigate();
   const dispatch = useDispatch();
   const { id } = useParams();
+
+  
   useEffect(() => {
     dispatch(asyncloadmovie(id));
      return () =>{
@@ -33,7 +41,7 @@ const Moviedetails = () => {
         backgroundSize: "cover",
         backgroundRepeat: "no-repeat",
       }}
-      className="w-screen h-[140vh] px-[10vh]" 
+      className="w-screen h-[140vh] px-[10vh] relative" 
     >
       <nav className="h-[10vh] w-full text-zinc-100 flex gap-10 text-2xl items-center">
         <Link
@@ -83,7 +91,14 @@ const Moviedetails = () => {
              <h1 className="text-xl font-semibold mt-5 ">Movie Translations</h1> 
              <p className="mb-10">{info.translations.join(', ')}</p>
 
-             <Link className=" p-10 bg-[#6556CD] rounded-lg py-5 px-10" to={`${pathname}/trailer`}><i class="ri-play-line mr-3"></i> Play Trailer</Link>
+             <a
+                            href={`https://www.youtube.com/watch?v=${key}`}
+                            target="_blank" // This opens the link in a new tab
+                            rel="noopener noreferrer" // Important for security
+                            className="py-5 px-10 bg-[#6556CD] rounded-lg"
+                        >
+                            <i className="ri-play-line mr-3"></i> Play Trailer
+                        </a>
                 
           </div>
           
@@ -98,6 +113,8 @@ const Moviedetails = () => {
       <hr className="mt-10"/>
       <h1 className="text-2xl font-semibold text-white mt-10">Recommendations</h1>          
       <HorizontalCard data = {info.recommendations.length ? info.recommendations : info.similar}/>
+
+      
     </div>
   ) : (
     <Loading />
