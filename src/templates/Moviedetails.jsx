@@ -1,8 +1,9 @@
 import React, { useEffect } from "react";
-import { asyncloadmovie } from "../store/actions/movieActions";
+import { asyncloadmovie, removemovie } from "../store/actions/movieActions";
 import { useDispatch, useSelector } from "react-redux";
 import {  useLocation, useNavigate, useParams } from "react-router-dom";
 import { Link } from "react-router-dom";
+import HorizontalCard from './HorizontalCard'
 import Loading from "../components/Loading";
 
 const Moviedetails = () => {
@@ -13,7 +14,10 @@ const Moviedetails = () => {
   const { id } = useParams();
   useEffect(() => {
     dispatch(asyncloadmovie(id));
-  }, []);
+     return () =>{
+      dispatch(removemovie())
+     }
+  }, [id]);
   console.log(info);
 
   
@@ -29,7 +33,7 @@ const Moviedetails = () => {
         backgroundSize: "cover",
         backgroundRepeat: "no-repeat",
       }}
-      className="w-screen h-screen px-[10vh]" 
+      className="w-screen h-[140vh] px-[10vh]" 
     >
       <nav className="h-[10vh] w-full text-zinc-100 flex gap-10 text-2xl items-center">
         <Link
@@ -51,6 +55,7 @@ const Moviedetails = () => {
         >
           IMDB
         </a>
+        <Link to='/'>Home</Link>
       </nav>
 
       <div className="w-full flex">
@@ -90,6 +95,9 @@ const Moviedetails = () => {
         </div>
           
       </div>
+      <hr className="mt-10"/>
+      <h1 className="text-2xl font-semibold text-white mt-10">Recommendations</h1>          
+      <HorizontalCard data = {info.recommendations.length ? info.recommendations : info.similar}/>
     </div>
   ) : (
     <Loading />
