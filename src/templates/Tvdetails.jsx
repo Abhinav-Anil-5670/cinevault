@@ -8,6 +8,15 @@ import Loading from "../components/Loading";
 
 const Tvdetails = () => {
   const { info } = useSelector((state) => state.tv);
+  useEffect(() => {
+      
+      if (info && info.detail && info.detail.title) {
+        document.title = `Cinevault | ${info.detail.title ||
+              info.detail.name ||
+              info.detail.original_name ||
+              info.detail.original_title}`;
+      }
+    }, [info]);
 
   // Safely find the trailer key from the full video list
   const videos = info?.videos?.results;

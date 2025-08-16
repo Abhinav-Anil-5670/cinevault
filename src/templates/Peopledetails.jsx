@@ -9,7 +9,12 @@ import DropDown from "./DropDown";
 
 const Peopledetails = () => {
   const { info } = useSelector((state) => state.people);
-
+  useEffect(() => {
+    // Only try to set the title if the 'info' object and its properties exist
+    if (info && info.detail && info.detail.name) {
+      document.title = `Cinevault | ${info.detail.name}`;
+    }
+  }, [info]);
   const [category, setcategory] = useState("movie");
 
   const Navigate = useNavigate();

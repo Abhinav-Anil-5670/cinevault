@@ -8,8 +8,17 @@ import Loading from "../components/Loading";
 
 const Moviedetails = () => {
   const { info } = useSelector((state) => state.movie);
+  useEffect(() => {
+    // Only try to set the title if the 'info' object and its properties exist
+    if (info && info.detail && info.detail.title) {
+      document.title = `Cinevault | ${info.detail.title ||
+              info.detail.name ||
+              info.detail.original_name ||
+              info.detail.original_title}`;
+    }
+  }, [info]);
 
-  // Safely find the trailer key from the full video list
+
   const videos = info?.videos?.results;
   const officialTrailer = videos?.find((video) => video.type === "Trailer");
   const key = officialTrailer?.key || videos?.[0]?.key;

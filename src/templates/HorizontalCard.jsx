@@ -21,7 +21,7 @@ const HorizontalCard = ({ data }) => {
               </h1>
               <p className="mt-3  text-white">
                 {d.overview.slice(0, 100)}...
-                <Link className="text-blue-500">more</Link>
+                <span className="text-blue-500"> more</span>
               </p>
             </Link>
           );
