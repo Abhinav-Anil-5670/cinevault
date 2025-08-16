@@ -31,9 +31,9 @@ It uses the [TMDb API](https://www.themoviedb.org/documentation/api) to fetch re
 
 ## Tech Stack
 
-- **Frontend:** Vite + JavaScript/React (if applicable)
+- **Frontend:** Vite + React + Redux
 - **API:** TMDb API
-- **Styling:** (Add framework here if you used one, e.g. TailwindCSS, plain CSS, etc.)
+- **Styling:** TailwindCSS
 
 ⚠️ **Note:** This project is currently **not responsive**.
 
