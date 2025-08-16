@@ -43,7 +43,7 @@ It uses the [TMDb API](https://www.themoviedb.org/documentation/api) to fetch re
 
 1. Clone the repository:
    ```bash
-   git clone <your-repo-url>
+   git clone https://github.com/Abhinav-Anil-5670/cinevault
    
 2. Install dependencies:
    ```bash
