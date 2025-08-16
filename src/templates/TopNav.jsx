@@ -25,7 +25,7 @@ const TopNav = () => {
     <div className='w-full h-[10vh] relative flex justify-start items-center p-5 '>
         <i class="ri-search-line text-zinc-400 text-3xl"></i>
         <input type="text" className='w-[50%] mx-10 p-5 text-xl outline:none border:none bg-transparent text-white' placeholder='Search Anything' onChange={(e)=>setquery(e.target.value)} value={query}/>
-        {query.length > 0 && <i onClick={()=>setquery("")} class="ri-close-line text-zinc-400 text-3xl"></i>}
+        {query.length > 0 && <i onClick={()=>setquery("")} className="ri-close-line text-zinc-400 text-3xl"></i>}
 
         <div className='z-[100] absolute w-[50%] rounded max-h-[50vh] bg-zinc-300  top-[100%] overflow-auto left-[5.1%] '>
             {search?.map((s,i)=>{

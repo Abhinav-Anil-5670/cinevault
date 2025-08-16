@@ -24,7 +24,7 @@ const Tvdetails = () => {
       dispatch(removetv());
     };
   }, [id]);
-  console.log(info);
+
 
   return info ? (
     <div
@@ -46,13 +46,13 @@ const Tvdetails = () => {
           className=" hover:text-[#6556CD]  ri-arrow-left-line"
         ></Link>
         <a target="_blank" href={info.detail.homepage}>
-          <i class="ri-external-link-line"></i>
+          <i className="ri-external-link-line"></i>
         </a>
         <a
           target="_blank"
           href={`https://www.wikidata.org/wiki/${info.externalid.wikidata_id}`}
         >
-          <i class="ri-earth-line"></i>
+          <i className="ri-earth-line"></i>
         </a>
         <a
           target="_blank"
