@@ -9,7 +9,7 @@ import Loading from "../components/Loading";
 const Moviedetails = () => {
   const { info } = useSelector((state) => state.movie);
   useEffect(() => {
-    // Only try to set the title if the 'info' object and its properties exist
+    
     if (info && info.detail && info.detail.title) {
       document.title = `Cinevault | ${info.detail.title ||
               info.detail.name ||
